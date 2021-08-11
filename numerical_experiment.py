@@ -7,6 +7,7 @@ from data_reader import DataReader
 from display import display_cumulative_losses_and_regret
 from evaluator import Evaluator
 from loss_function_generator import generate_loss_functions
+from scale_features import scale_features
 from simulation import simulate_adagrad, simulate_online_gradient_descent, simulate_follow_the_regularized_leader
 
 
@@ -25,6 +26,7 @@ def main():
         new_data_list.append(tmp)
 
     feature_vectors = np.array(new_data_list)
+    feature_vectors = scale_features(feature_vectors)
 
     loss_functions = generate_loss_functions(labels=labels, features=feature_vectors)
 
