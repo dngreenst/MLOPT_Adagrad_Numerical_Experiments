@@ -45,7 +45,8 @@ def main():
     print(sum(evaluator_ogd.running_loss) - regret_in_hindsight)
     print(sum(evaluator_ftrl.running_loss) - regret_in_hindsight)
 
-    display_cumulative_losses_and_regret(adagard=evaluator_adagrad, ogd=evaluator_ogd, ftrl=evaluator_ftrl)
+    display_cumulative_losses_and_regret(adagard=evaluator_adagrad, ogd=evaluator_ogd, ftrl=evaluator_ftrl,
+                                         regret_in_hindsight=regret_in_hindsight)
 
 if __name__ == "__main__":
     # execute only if run as a script
