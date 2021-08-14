@@ -10,13 +10,13 @@ def generate_loss_functions(labels: np.array, features: np.array):
 
     loss_functions = []
 
-    const = 10
+    const = 15
     alpha = 1.1
 
     samples_num = len(labels)
     features_num = len(features[0])
 
-    feature_probabilities_list = [0.0]
+    feature_probabilities_list = [0.7]
     feature_probabilities_list.extend([min(1.0, const * np.power(1/float(i), alpha)) for i in range(1, features_num)])
     feature_probabilities = np.array(feature_probabilities_list)
     feature_probabilities = np.minimum(feature_probabilities, 0.7)

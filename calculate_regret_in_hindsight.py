@@ -41,6 +41,10 @@ def calculate_regret_in_hindsight(loss_functions: List[HingeLossFunction]):
                                   x0=np.zeros(31), method='Nelder-Mead', options=options)
 
     print(f'Regret of best in hindsight: {res.fun}')
+
+    if np.linalg.norm(res.x) > 1:
+        print(f'Regret in hindsight is not indicative - maximum is out of bounds!')
+
     return res.fun
 
 
