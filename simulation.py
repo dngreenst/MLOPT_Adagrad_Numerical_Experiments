@@ -1,6 +1,7 @@
 import numpy as np
 from typing import List
 
+import Params
 from evaluator import Evaluator
 from hinge_loss_function import HingeLossFunction
 
@@ -16,8 +17,8 @@ def simulate_adagrad(loss_functions: List[HingeLossFunction], dimension: int, ev
     curr_x = np.zeros(dimension)
     epsilon = 1e-3
     s = np.zeros(dimension)
-    learning_rate = 1.0
-    radius = 1
+    learning_rate = 100.0
+    radius = Params.RADIUS
 
     for iteration, loss_function in enumerate(loss_functions):
         gradient = loss_function.gradient(curr_x)
@@ -30,7 +31,7 @@ def simulate_adagrad(loss_functions: List[HingeLossFunction], dimension: int, ev
 def simulate_online_gradient_descent(loss_functions: List[HingeLossFunction], dimension: int, evaluator: Evaluator):
     curr_x = np.zeros(dimension)
     G = np.sqrt(dimension)  # all the features are normalized to [0, 1]
-    radius = 1
+    radius = Params.RADIUS
     D = 2 * radius
     t = 1
 
@@ -57,7 +58,7 @@ def simulate_follow_the_regularized_leader(loss_functions: List[HingeLossFunctio
 
     accumulated_subgradients = np.zeros(dimension)
     G = np.sqrt(dimension)  # all the features are normalized to [0, 1]
-    radius = 1
+    radius = Params.RADIUS
     D = 2 * radius
     t = 1
 

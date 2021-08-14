@@ -1,5 +1,6 @@
 from typing import List
 
+import Params
 from hinge_loss_function import HingeLossFunction
 
 import scipy.optimize
@@ -42,7 +43,7 @@ def calculate_regret_in_hindsight(loss_functions: List[HingeLossFunction]):
 
     print(f'Regret of best in hindsight: {res.fun}')
 
-    if np.linalg.norm(res.x) > 1:
+    if np.linalg.norm(res.x) > Params.RADIUS:
         print(f'Regret in hindsight is not indicative - maximum is out of bounds!')
 
     return res.fun
